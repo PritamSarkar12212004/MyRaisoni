@@ -15,13 +15,15 @@ import Feather from "@expo/vector-icons/Feather";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import LottiAnimation from "@/src/components/combaine/lottiAnimation/LottiAnimation";
 import Animation from "@/src/constants/Animation";
+import useCommanCall from "@/src/hooks/useCommanCall";
 
 const index = () => {
   const { id, setid, pass, setpass, loader } = userContext();
-  const { AuthKeyFinder } = useMainDataCall();
+  const { AuthKeyFinder } = useCommanCall();
+  const { successFun } = useMainDataCall();
 
   const logar = () => {
-    AuthKeyFinder({ id, pass, ErrorAlert });
+    AuthKeyFinder({ id, pass, ErrorAlert, apiCall: successFun });
   };
 
   const idInput = (id) => {

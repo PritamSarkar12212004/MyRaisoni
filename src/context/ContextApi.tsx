@@ -16,8 +16,15 @@ export const ContextProvider = ({ children }: any) => {
   const [studentAddress, setstudentAddress] = useState(null);
   const [userDetails, setuserDetails] = useState(null);
 
+  // global token
+  const [globaltoken, setglobaltoken] = useState(null);
+  const [globaluid, setglobaluid] = useState(null);
+
   // userData
   const [userData, setuserData] = useState(null);
+
+  // attendance Section
+  const [attendance, setattendance] = useState(null);
   return (
     <Context.Provider
       value={{
@@ -45,6 +52,12 @@ export const ContextProvider = ({ children }: any) => {
         setstudentAddress,
         userDetails,
         setuserDetails,
+        globaltoken,
+        setglobaltoken,
+        globaluid,
+        setglobaluid,
+        attendance,
+        setattendance,
       }}
     >
       {children}

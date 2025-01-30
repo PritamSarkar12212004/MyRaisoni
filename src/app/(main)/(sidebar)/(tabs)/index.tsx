@@ -4,6 +4,7 @@ import Header from "@/src/components/main/header/Header";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { userContext } from "@/src/context/ContextApi";
+import PaiChart2 from "@/src/components/Paichart/PaiChart2";
 const index = () => {
   const { castAndReligion, courseDetails, idDetails, userDetails } =
     userContext();
@@ -16,6 +17,8 @@ const index = () => {
             <Text className="text-2xl font-semibold text-wrap text-center">
               {courseDetails.branchName}
             </Text>
+            <PaiChart2 init={10} fainal={parseFloat(courseDetails.cgpaData)} />
+
             <View className="w-full mt-2 flex border-[1px] rounded-[25px] bg-[#FF4800] p-5 border-zinc-200">
               <Text className="text-lg font-bold text-white">
                 Session Detiles
@@ -42,11 +45,7 @@ const index = () => {
               </View>
             </View>
           </View>
-          <View className="w-full  rounded-[30px] bg-[#0367FB] flex items-center justify-center p-14">
-            <Text className="text-6xl  leading-tight font-extrabold text-white">
-              {courseDetails.cgpaData}
-            </Text>
-          </View>
+
           <View className="w-full gap-2  rounded-[30px] bg-[#D1F801] flex p-10">
             <Text className="text-2xl font-bold tracking-widest">
               Contact Detiles

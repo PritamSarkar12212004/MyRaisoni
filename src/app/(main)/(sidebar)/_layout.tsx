@@ -5,13 +5,13 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { DrawerItemList } from "@react-navigation/drawer";
 import useLogout from "@/src/hooks/useLogout";
 const _layout = () => {
-  const {Logout}=useLogout()
+  const { Logout } = useLogout();
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
         drawerContent={(props) => {
           return (
-            <View className="w-full h-full  flex   gap-10 relative py-20">
+            <View className="w-full h-full  flex    gap-10 relative py-20">
               <View className="w-full px-2">
                 <View className="w-full border-b-2 border-[#F33829] pb-3">
                   <Text className="text-4xl font-semibold">
@@ -24,12 +24,8 @@ const _layout = () => {
                 <DrawerItemList {...props} />
               </View>
               <View className="absolute bottom-10 w-full px-7">
-                <TouchableOpacity
-                  onPress={() => Logout()}
-                  activeOpacity={0.8}
-                  className=" bg-[#F33829] w-full px-2 py-5 rounded-3xl"
-                >
-                  <Text className="text-center  text-xl text-white font-vold">
+                <TouchableOpacity onPress={() => Logout()}>
+                  <Text className="text-2xl font-semibold text-black">
                     Logout
                   </Text>
                 </TouchableOpacity>
@@ -65,23 +61,7 @@ const _layout = () => {
             },
           }}
         />
-        <Drawer.Screen
-          name="Address"
-          options={{
-            title: "Address",
-            drawerInactiveTintColor: "gray",
-            drawerActiveTintColor: "#F33829",
-            drawerLabel: "Address",
-            drawerLabelStyle: {
-              fontSize: 16,
-              fontWeight: "bold",
-            },
-            drawerItemStyle: {
-              backgroundColor: "transparent",
-              borderRadius: 0,
-            },
-          }}
-        />
+
         <Drawer.Screen
           name="IdCard"
           options={{
@@ -100,12 +80,12 @@ const _layout = () => {
           }}
         />
         <Drawer.Screen
-          name="ParentInformation"
+          name="MyAttendance"
           options={{
-            title: "Parrent Information",
+            title: "My Attendance",
             drawerInactiveTintColor: "gray",
             drawerActiveTintColor: "#F33829",
-            drawerLabel: "Parrent Information",
+            drawerLabel: "My Attendance",
             drawerLabelStyle: {
               fontSize: 16,
               fontWeight: "bold",

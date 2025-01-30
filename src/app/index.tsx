@@ -10,11 +10,12 @@ const index = () => {
   const cheker = () => {
     const userData = Storge.getString("userData");
     if (userData) {
-      router.replace("/(auth)/AutoLogin");
+      router.replace("/(auth)");
     } else {
-      router.replace("/(spalash)");
+      router.replace("/(main)");
     }
   };
+
   useEffect(() => {
     setTimeout(() => {
       cheker();
