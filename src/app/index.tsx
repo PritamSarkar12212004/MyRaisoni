@@ -10,9 +10,9 @@ const index = () => {
   const cheker = () => {
     const userData = Storge.getString("userData");
     if (userData) {
-      router.replace("/(main)/(sidebar)/MyAttendance");
+      router.replace("/(auth)");
     } else {
-      router.replace("/(main)/(sidebar)/MyAttendance");
+      router.replace("/(auth)");
     }
   };
 

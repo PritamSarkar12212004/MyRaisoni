@@ -7,26 +7,39 @@ import { userContext } from "@/src/context/ContextApi";
 import PaiChart2 from "@/src/components/Paichart/PaiChart2";
 import usettendanceCall from "@/src/hooks/usettendanceCall";
 import useTitmeTableCall from "@/src/hooks/useTitmeTableCall";
+import useStudentFeesCall from "@/src/hooks/useStudentFeesCall";
 const index = () => {
   const { castAndReligion, courseDetails, idDetails, userDetails } =
     userContext();
   const { ApicallAttendance } = usettendanceCall();
+  const { ApiStudentFeesCall } = useStudentFeesCall();
+
   const { ApiTimeTableCall } = useTitmeTableCall();
 
   useEffect(() => {
     ApicallAttendance();
     ApiTimeTableCall();
+    ApiStudentFeesCall();
   }, []);
   return (
     <ScrollView className="w-full h-full bg-white">
-      <View className="w-full h-full  flex gap-2 px-2  ">
+      <View className="w-full h-full  flex gap-2 px-2 py-5  ">
         <Header />
         <View className="w-full gap-5 flex px-2 mt-8 items-center justify-center">
           <View className="w-full flex items-center justify-center gap-3 ">
             <Text className="text-2xl font-semibold text-wrap text-center">
               {courseDetails.branchName}
             </Text>
-            <PaiChart2 init={10} fainal={parseFloat(courseDetails.cgpaData)} />
+            <View className="flex-row">
+              <PaiChart2
+                init={10}
+                fainal={parseFloat(courseDetails.cgpaData)}
+              />
+              <PaiChart2
+                init={10}
+                fainal={parseFloat(courseDetails.cgpaData)}
+              />
+            </View>
 
             <View className="w-full mt-2 flex border-[1px] rounded-[25px] bg-[#FF4800] p-5 border-zinc-200">
               <Text className="text-lg font-bold text-white">

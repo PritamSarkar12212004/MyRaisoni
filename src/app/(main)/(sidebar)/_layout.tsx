@@ -1,134 +1,192 @@
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from "expo-router/drawer";
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
-import { DrawerItemList } from "@react-navigation/drawer";
+import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Image, Text, View } from "react-native";
+import { DrawerItemList } from "@react-navigation/drawer";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import useLogout from "@/src/hooks/useLogout";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import { userContext } from "@/src/context/ContextApi";
 const _layout = () => {
   const { Logout } = useLogout();
+  const { userDetails, } = userContext();
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
+        screenOptions={{
+          drawerActiveBackgroundColor: "transparent",
+          drawerActiveTintColor: "transparent",
+        }}
         drawerContent={(props) => {
           return (
-            <View className="w-full h-full  flex   gap-10 relative">
-              <View className="w-full  gap-2 flex  justify-center pb-5 pt-20 px-3  bg-blue-500">
-                <Image
-                  source={{
-                    uri: "https://i.pinimg.com/736x/4c/60/42/4c6042228823e4a4657dc30425955222.jpg",
-                  }}
-                />
-                <Text className="text-4xl font-bold text-white">
-                  Pritam Sarkar
+            <View className="w-full items-center justify-between h-full  flex bg-zinc-200 backdrop-blur-lg  relative pt-20 pb-10">
+              <View className="w-full flex items-center justify-center gap-10">
+                <View className=" px-10 py-5 rounded-[40px] gap-2 flex items-center justify-center bg-zinc-100">
+                  <Image
+                    source={{
+                      uri: "https://i.pinimg.com/736x/84/7e/d5/847ed55631353c925a56fc4f9ca67ebb.jpg",
+                    }}
+                    className="w-44 h-44 rounded-2xl"
+                    resizeMode="cover"
+                  />
+                  <Text className="  font-medium  tracking-widest">
+                    {userDetails.userFirstName} {userDetails.middleName}
+                    {userDetails.lastName}
+                  </Text>
+                  <View className="flex  w-full  items-center justify-center">
+                    <Text className=" tracking-widest">
+                      ID : {userDetails.registrationNumber}
+                    </Text>
+                    <Text className="tracking-widest">
+                      Roll No : {userDetails.rollNumber}
+                    </Text>
+                  </View>
+                </View>
+                <View className="w-full ">
+                  <View className="w-full flex items-center justify-center">
+                    <Text className="text-2xl  font-semibold text-[#7C73E6]">
+                      Information
+                    </Text>
+                  </View>
+                  <DrawerItemList {...props} />
+                </View>
+              </View>
+              <View className=" w-full flex items-center justify-center">
+                <Text className="text-2xl font-bold text-[#7c73e6] underline">
+                  MyRaioni World
                 </Text>
-                <View className="flex-row items-center  gap-2">
-                  <AntDesign name="idcard" size={24} color="white" />
-                  <Text className="text-xl text-white">7796419792</Text>
-                </View>
-                <View className="flex-row items-center  gap-2">
-                  <Ionicons name="call" size={24} color="white" />
-                  <Text className="text-xl text-white">GHURA39U39U22</Text>
-                </View>
               </View>
             </View>
           );
-        }}
-        screenOptions={{
-          headerBackground(props) {
-            return <View className="w-full h-full bg-white" />;
-          },
-          drawerStyle: {
-            backgroundColor: "white",
-            width: "80%",
-            borderRadius: 0,
-          },
         }}
       >
         <Drawer.Screen
           name="(tabs)"
           options={{
-            title: "Home",
-            drawerInactiveTintColor: "gray",
-            drawerActiveTintColor: "#F33829",
-            drawerLabel: "Home",
-            drawerLabelStyle: {
-              fontSize: 16,
-              fontWeight: "bold",
-            },
-            drawerItemStyle: {
-              backgroundColor: "transparent",
-              borderRadius: 0,
+            drawerIcon({ focused }) {
+              return (
+                <View className="w-full flex items-center justify-center px-5">
+                  <View
+                    className={`w-full flex items-center  px-5 gap-3 flex-row  h-14 rounded-xl  ${
+                      focused ? "bg-[#7C73E6]" : "bg-orange-500"
+                    } `}
+                  >
+                    <View>
+                      <Entypo name="home" size={25} color="white" />
+                    </View>
+                    <Text className="text-lg tracking-widest text-white  font-semibold">
+                      Home
+                    </Text>
+                  </View>
+                </View>
+              );
             },
           }}
         />
-
         <Drawer.Screen
           name="IdCard"
           options={{
-            title: "ID Card",
-            drawerInactiveTintColor: "gray",
-            drawerActiveTintColor: "#F33829",
-            drawerLabel: "ID Card",
-            drawerLabelStyle: {
-              fontSize: 16,
-              fontWeight: "bold",
-            },
-            drawerItemStyle: {
-              backgroundColor: "transparent",
-              borderRadius: 0,
-            },
-          }}
-        />
-        <Drawer.Screen
-          name="TimeTable"
-          options={{
-            title: "Time Table",
-            drawerInactiveTintColor: "gray",
-            drawerActiveTintColor: "#F33829",
-            drawerLabel: "Time Table",
-            drawerLabelStyle: {
-              fontSize: 16,
-              fontWeight: "bold",
-            },
-            drawerItemStyle: {
-              backgroundColor: "transparent",
-              borderRadius: 0,
+            drawerIcon({ focused }) {
+              return (
+                <View className="w-full flex items-center justify-center px-5">
+                  <View
+                    className={`w-full flex items-center  px-5 gap-3 flex-row  h-14 rounded-xl  ${
+                      focused ? "bg-[#7C73E6]" : "bg-orange-500"
+                    } `}
+                  >
+                    <View>
+                      <Ionicons name="document" size={25} color="white" />
+                    </View>
+                    <Text className="text-lg tracking-widest text-white  font-semibold">
+                      Student Id
+                    </Text>
+                  </View>
+                </View>
+              );
             },
           }}
         />
         <Drawer.Screen
           name="MyAttendance"
           options={{
-            title: "My Attendance",
-            drawerInactiveTintColor: "gray",
-            drawerActiveTintColor: "#F33829",
-            drawerLabel: "My Attendance",
-            drawerLabelStyle: {
-              fontSize: 16,
-              fontWeight: "bold",
+            drawerIcon({ focused }) {
+              return (
+                <View className="w-full flex items-center justify-center px-5">
+                  <View
+                    className={`w-full flex items-center  px-5 gap-3 flex-row  h-14 rounded-xl  ${
+                      focused ? "bg-[#7C73E6]" : "bg-orange-500"
+                    } `}
+                  >
+                    <View>
+                      <MaterialIcons
+                        name="emoji-people"
+                        size={25}
+                        color="white"
+                      />
+                    </View>
+                    <Text className="text-lg tracking-widest text-white  font-semibold">
+                      Attendance
+                    </Text>
+                  </View>
+                </View>
+              );
             },
-            drawerItemStyle: {
-              backgroundColor: "transparent",
-              borderRadius: 0,
+          }}
+        />
+        <Drawer.Screen
+          name="TimeTable"
+          options={{
+            drawerIcon({ focused }) {
+              return (
+                <View className="w-full flex items-center justify-center px-5">
+                  <View
+                    className={`w-full flex items-center  px-5 gap-3 flex-row  h-14 rounded-xl  ${
+                      focused ? "bg-[#7C73E6]" : "bg-orange-500"
+                    } `}
+                  >
+                    <View>
+                      <MaterialCommunityIcons
+                        name="timetable"
+                        size={25}
+                        color="white"
+                      />
+                    </View>
+                    <Text className="text-lg tracking-widest text-white  font-semibold">
+                      Time Table
+                    </Text>
+                  </View>
+                </View>
+              );
             },
           }}
         />
         <Drawer.Screen
           name="Fainance"
           options={{
-            title: "Fainance",
-            drawerInactiveTintColor: "gray",
-            drawerActiveTintColor: "#F33829",
-            drawerLabel: "Fainance",
-            drawerLabelStyle: {
-              fontSize: 16,
-              fontWeight: "bold",
-            },
-            drawerItemStyle: {
-              backgroundColor: "transparent",
-              borderRadius: 0,
+            drawerIcon({ focused }) {
+              return (
+                <View className="w-full flex items-center justify-center px-5">
+                  <View
+                    className={`w-full flex items-center  px-5 gap-3 flex-row  h-14 rounded-xl  ${
+                      focused ? "bg-[#7C73E6]" : "bg-orange-500"
+                    } `}
+                  >
+                    <View>
+                      <FontAwesome5
+                        name="money-bill-alt"
+                        size={25}
+                        color="white"
+                      />
+                    </View>
+                    <Text className="text-lg tracking-widest text-white  font-semibold">
+                      Collage Fee
+                    </Text>
+                  </View>
+                </View>
+              );
             },
           }}
         />
