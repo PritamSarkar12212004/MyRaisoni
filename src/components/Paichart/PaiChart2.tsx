@@ -16,6 +16,9 @@ const PaiChart2 = ({ init, fainal }: any) => {
         donut
         radius={100}
         innerRadius={60}
+        shadowWidth={10}
+        showGradient
+        showTooltip
         centerLabelComponent={() => {
           return (
             <View className="flex items-center justify-center ">

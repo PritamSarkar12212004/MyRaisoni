@@ -1,6 +1,5 @@
 import AuthConatant from "../constants/AuthConatant";
 import { userContext } from "../context/ContextApi";
-import useMainDataCall from "./useMainDataCall";
 import axios from "axios";
 
 const useCommanCall = () => {

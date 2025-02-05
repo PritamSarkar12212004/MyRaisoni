@@ -1,13 +1,22 @@
 import { View, Text, ScrollView, Image } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "@/src/components/main/header/Header";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { userContext } from "@/src/context/ContextApi";
 import PaiChart2 from "@/src/components/Paichart/PaiChart2";
+import usettendanceCall from "@/src/hooks/usettendanceCall";
+import useTitmeTableCall from "@/src/hooks/useTitmeTableCall";
 const index = () => {
   const { castAndReligion, courseDetails, idDetails, userDetails } =
     userContext();
+  const { ApicallAttendance } = usettendanceCall();
+  const { ApiTimeTableCall } = useTitmeTableCall();
+
+  useEffect(() => {
+    ApicallAttendance();
+    ApiTimeTableCall();
+  }, []);
   return (
     <ScrollView className="w-full h-full bg-white">
       <View className="w-full h-full  flex gap-2 px-2  ">

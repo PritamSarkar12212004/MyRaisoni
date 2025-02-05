@@ -24,7 +24,7 @@ const StudentProfile = () => {
           {userDetails.userFirstName.slice(1)} {userDetails.middleName}{" "}
           {userDetails.lastName}
         </Text>
-        <Text className="text-lg font-thin">
+        <Text className="text-lgz font-thin">
           Rg No : {userDetails.registrationNumber}
         </Text>
         <Text className="text-lg font-thin">

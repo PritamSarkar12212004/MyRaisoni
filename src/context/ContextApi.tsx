@@ -25,6 +25,15 @@ export const ContextProvider = ({ children }: any) => {
 
   // attendance Section
   const [attendance, setattendance] = useState(null);
+
+  // titme table section
+  const [timetable, settimetable] = useState(null);
+
+  // const weekDitiles
+  const [weekDetails, setweekDetails] = useState(null);
+
+  // fees Detiles
+  const [feesDetails, setfeesDetails] = useState(null);
   return (
     <Context.Provider
       value={{
@@ -58,6 +67,12 @@ export const ContextProvider = ({ children }: any) => {
         setglobaluid,
         attendance,
         setattendance,
+        timetable,
+        settimetable,
+        weekDetails,
+        setweekDetails,
+        feesDetails,
+        setfeesDetails,
       }}
     >
       {children}

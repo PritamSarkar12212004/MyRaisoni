@@ -5,5 +5,7 @@ const Animation = {
   Data: require("../assets/files/animation/data.json"),
   Address: require("../assets/files/animation/address.json"),
   FetchData: require("../assets/files/animation/FetchData.json"),
+  TimeTable: require("../assets/files/animation/timeTable.json"),
+  Money: require("../assets/files/animation/money.json"),
 };
 export default Animation;
